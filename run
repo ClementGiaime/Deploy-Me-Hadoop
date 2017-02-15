@@ -1,0 +1,10 @@
+#!/bin/bash
+cd ./script
+chmod 744 *.sh
+chmod 744 ./*.py
+chmod 744 ./*
+./python/ip_files.py
+./ssh_gen.sh
+./install_hadoop.sh
+./start.sh
+cd ..

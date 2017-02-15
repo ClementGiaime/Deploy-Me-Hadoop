@@ -1,0 +1,16 @@
+#!/usr/bin/expect
+
+set host [lindex $argv 0]
+set user [lindex $argv 1]
+set pass [lindex $argv 2]
+set home_dir [lindex $argv 3]
+
+
+spawn ssh-copy-id -oStrictHostKeyChecking=no -i $home_dir/.ssh/id_rsa.pub $user@$host
+expect {
+	"password:" {
+		send "$pass\r"
+		interact
+		exit 0
+	}
+}

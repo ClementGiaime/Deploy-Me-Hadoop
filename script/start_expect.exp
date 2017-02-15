@@ -1,0 +1,27 @@
+#!/usr/bin/expect
+
+set $path_hadoop [lindex $argv 0]
+
+
+spawn $path_hadoop/bin/hdfs namenode -format
+expect {
+	""{
+		send "Y"
+		interact
+		exit 0	
+	}
+}
+
+spawn $path_hadoop/sbin/start-dfs.sh
+expect {
+	""{
+		send "yes"
+		interact
+		exit 0	
+	}
+	""{
+		send "yes"
+		interact
+		exit 0	
+	}
+}
