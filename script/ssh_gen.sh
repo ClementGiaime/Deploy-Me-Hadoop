@@ -18,5 +18,5 @@ echo "ok"
 for i in $host_ip
 do
   echo "Copie de la clef sur $i"
-  ./ssh_expect.EXP $i $user $pass $home_dir > log.txt
+  ./ssh_expect.exp $i $user $pass $home_dir > log.txt
 done

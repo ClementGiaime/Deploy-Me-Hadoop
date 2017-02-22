@@ -4,23 +4,14 @@ set path_hadoop [lindex $argv 0]
 
 
 spawn $path_hadoop/bin/hdfs namenode -format
-expect {
-	"(Y or N)"{
-		send "Y"
-		interact	
-	}
-}
+expect "(Y or N)" { send "Y\r" }
+
+interact
 
 spawn $path_hadoop/sbin/start-all.sh
-expect {
-	"(yes/no)?"{
-		send "yes"
-		interact
-		exit 0	
-	}
-	"(yes/no)?"{
-		send "yes"
-		interact
-		exit 0	
-	}
-}
+expect "(yes/no)?" { send "yes\r" }
+sleep 2
+expect "(yes/no)?" { send "yes\r" }
+
+interact
+exit 0

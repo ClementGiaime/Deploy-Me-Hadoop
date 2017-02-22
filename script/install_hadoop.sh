@@ -7,6 +7,7 @@ test_install=False
 #boucle permettant de ré-itérer le téléchargement des fichiers en cas d'échec
 while [ $test_install = False ]
 do
+
   #test si les fichiers hadoop ont déjà été téléchargés et extraits
   if test ! -d ./$hadoop_ver
   then
@@ -20,9 +21,16 @@ do
     fi
     
     
-    rm KEYS
-    rm $hadoop_tar_gz.asc
-
+    if test -d KEYS
+    then
+      rm -f KEYS
+    fi
+    
+    if test -d $hadoop_tar_gz.asc
+    then
+      rm -f $hadoop_tar_gz.asc
+    fi
+    
     #téléchargement du résumé et des clés permettant
     #de vérifier intégrité des fichiers hadoop
 
@@ -63,11 +71,16 @@ done
 
 
 echo -n "Extraction des fichiers... "
-host_ip=`cat ./host`      # récupération des adresses IP des différents noeuds
-tar xvf $hadoop_tar_gz > log.txt # extraction des fichiers hadoop
+
+#récupération des adresses IP des différents noeuds
+host_ip=`cat ./host`
+
+#extraction des fichiers hadoop
+tar xvf $hadoop_tar_gz > log.txt
 echo "ok"
 
 mkdir temp temp_name temp_secondary
+
 echo -n "Configuration des fichiers... "
 ./python/files_config.py $path_name $path_data $java_env $path_hadoop $path_store
 echo "ok"
@@ -76,13 +89,15 @@ echo "ok"
 cp ./temp/* ./$hadoop_ver/etc/hadoop/
 
 #Installation de Hadoop
-for i in $host_ip # on parcourt la liste des noeuds
+#on parcourt la liste des noeuds
+for i in $host_ip
 do
   echo -n "Copie de $hadoop_ver sur $i... "
   scp -r $hadoop_ver $user@$i:$path_hadoop_install > log.txt # copie des fichiers hadoop téléchargés sur chaque noeud
   echo "ok"
 done
 
+#Ajout des fichiers de configuration sur NameNode et Secondary
 set $host_ip
 scp ./temp_name/* $user@$1:$path_hadoop_file > log.txt
 

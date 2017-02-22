@@ -13,10 +13,9 @@ done
 ./start_expect.exp $path_hadoop
 
 echo "Rapport :\n\n"
-for i in $ip 
+for i in $host_ip
 do
  ssh $user@$i "cat $path_data/current/VERSION"
 done
 
-rm log.txt
-rm host
+rm -rf $hadoop_ver

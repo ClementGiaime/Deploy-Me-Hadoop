@@ -1,0 +1,14 @@
+#!/bin/bash
+source ./script/variable.sh
+
+$path_hadoop/sbin/stop-all.sh
+host_ip=`cat ./script/host`
+
+echo -n "Desinstallation de hadoop... "
+for i in $host_ip
+do
+  ssh $user@$i "rm -r $path_hadoop; rm -r $path_store" &> script/log.txt
+done
+echo "ok"
+
+  
