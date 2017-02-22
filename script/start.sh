@@ -12,10 +12,11 @@ done
 
 ./start_expect.exp $path_hadoop
 
-$path_hadoop/sbin/start-yarn.sh
-
-echo "Rapport :"
+echo "Rapport :\n\n"
 for i in $ip 
 do
  ssh $user@$i "cat $path_data/current/VERSION"
 done
+
+rm log.txt
+rm host

@@ -18,7 +18,8 @@ do
       wget -o log.txt $download_ver
       echo " ok"
     fi
-
+    
+    
     rm KEYS
     rm $hadoop_tar_gz.asc
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 user="**"
 pass="**"
-java_version="java-1.7.0-openjdk-amd64"
+java_version="java-1.8.0-openjdk-i386"
 hadoop_ver="hadoop-2.7.1"
 
 home_dir="/home/$user"

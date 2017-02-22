@@ -1,8 +1,8 @@
 #!/bin/bash
 cd ./script
 chmod 744 *.sh
-chmod 744 ./*.py
 chmod 744 ./*
+chmod 744 ./python/*.py
 ./python/ip_files.py
 ./ssh_gen.sh
 ./install_hadoop.sh
