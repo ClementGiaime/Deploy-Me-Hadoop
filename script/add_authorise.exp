@@ -1,0 +1,13 @@
+#!/usr/bin/expect
+
+set host [lindex $argv 0]
+set user [lindex $argv 1]
+set name [lindex $argv 2]
+
+spawn ssh $user@$name "ssh $user@$host"
+expect "(yes/no)?" { send "yes\r" }
+sleep 2
+expect "$" { send "exit\r" }
+sleep 2
+expect "$" { send "exit\r" }
+

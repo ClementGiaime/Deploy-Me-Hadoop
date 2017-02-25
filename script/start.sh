@@ -10,6 +10,8 @@ done
 
 #éxécution des commandes de démarrage des services hadoop
 
+set $host_ip
+
 ./start_expect.exp $path_hadoop
 
 echo "Rapport :\n\n"

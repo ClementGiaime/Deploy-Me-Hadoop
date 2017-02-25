@@ -20,3 +20,12 @@ do
   echo "Copie de la clef sur $i"
   ./ssh_expect.exp $i $user $pass $home_dir > log.txt
 done
+
+#set $host_ip
+#scp ~/.ssh/id_rsa* $user@$1:~/.ssh/
+
+
+#for i in $host_ip
+#do
+#./add_authorise.exp $i $user $1
+#done
