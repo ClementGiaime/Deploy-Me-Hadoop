@@ -47,3 +47,12 @@ script/Fichier_de_configuration #Fichier configuration de base pour les datanode
 script/Namenode_config
 script/Secondary_config
 ```
+
+* Donner les droits pour exécuter le script run
+```
+chmod 744 ./run
+```
+* puis lancer le script run
+```
+./run
+```
