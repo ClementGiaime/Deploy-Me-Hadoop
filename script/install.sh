@@ -1,5 +1,6 @@
 #!/bin/bash
 source ./variable.sh
+
 #récupération des adresses IP des différents noeuds
 host_ip=`cat ./host`
 
@@ -9,8 +10,10 @@ echo -n "Extraction des fichiers... "
 tar xvf $hadoop_tar_gz > log.txt
 echo "ok"
 
+#Crée les dossiers qui contiendront les fichiers de configuration
 mkdir temp temp_name temp_secondary
 
+#Configuration des fichiers hadoop traité par python + envoie de variable
 echo -n "Configuration des fichiers... "
 ./python/files_config.py $path_name $path_data $java_env $path_hadoop $path_store
 echo "ok"
@@ -35,4 +38,3 @@ scp ./temp_secondary/* $user@$2:$path_hadoop_file > log.txt
 echo "ok"
 
 rm -Rf ./temp ./temp_name ./temp_second
-

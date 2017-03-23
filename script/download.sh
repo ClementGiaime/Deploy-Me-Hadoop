@@ -1,38 +1,36 @@
 #!/bin/bash
 source ./variable.sh
 
-#variable de test
+#variable de test pour sortire de la boucle quand = True
 test_install=False
 
 #boucle permettant de ré-itérer le téléchargement des fichiers en cas d'échec
 while [ $test_install = False ]
 do
 
-  #test si les fichiers hadoop ont déjà été téléchargés et extraits
+  #test si les fichiers hadoop ont déjà ete téléchargé et extraits
   if test ! -d ./$hadoop_ver
   then
 
-    #test si les fichiers hadoop ont déjà été extraits
+    #test si les fichiers hadoop ont déjà été téléchargé
     if test ! -f ./$hadoop_tar_gz
     then
       echo -n "Téléchagement de $hadoop_tar_gz... "
       wget -o log.txt $download_ver
       echo " ok"
     fi
-    
-    
+
+    #téléchargement du résumé et des clés permettant
+    #de vérifier intégrité des fichiers hadoop
     if test -d KEYS
     then
       rm -f KEYS
     fi
-    
+
     if test -d $hadoop_tar_gz.asc
     then
       rm -f $hadoop_tar_gz.asc
     fi
-    
-    #téléchargement du résumé et des clés permettant
-    #de vérifier intégrité des fichiers hadoop
 
     echo -n "Téléchagement du résumé... "
     wget -o log.txt $sha_resum
