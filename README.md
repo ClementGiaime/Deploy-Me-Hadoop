@@ -1,5 +1,5 @@
 # Deploy Me Hadoop
-Deploy Me Hadoop est un script de déploiment Hadoop v2.x (V2.3 pas compris) principalement en shell.
+Deploy Me Hadoop est un script de déploiment Hadoop v2.x (V2.3 non comprise) principalement en shell.
 
 # Comment ça fonction
 * Télécharger Deploy-me-Hadoop
