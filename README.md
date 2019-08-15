@@ -9,9 +9,9 @@ wget https://codeload.github.com/ClementGiaime/Deploy-Me-Hadoop/zip/master
 unzip Deploy-me-Hadoop-master
 cd Deploy-me-Hadoop-master
 ```
-* Modification du fichier variable.sh dans Deploy-me-Hadoop-master/script/variable.sh
+* Modifier le fichier variable.sh dans Deploy-me-Hadoop-master/script/variable.sh
 
-Variable.sh contient les variables(logique) pour le deploiment de hadoop
+Variable.sh contient les variables pour le deploiement de hadoop
   
   >* La version de hadoop que l'on veut déployer `hadoop_ver="hadoop-2.7.1"`
   >* Le dossier JAVA_HOME qui se situe dans /usr/lib/jvm/$java_version `java_version="java-1.8.0-openjdk-i386"`
@@ -20,7 +20,7 @@ Variable.sh contient les variables(logique) pour le deploiment de hadoop
   >* Le dossier d'installation de hadoop `path_hadoop_install="$home_dir/Documents"`
   >* etc ...
 
-* Ajout ou modification du fichier host qui contient les @ip des machines ou l'on veut installer hadoop
+* Ajouter ou modifier le fichier host (Deploy-me-Hadoop-master/host) qui contient les @ip des machines ou l'on veut installer hadoop
 
 Le fichier host doit obligatoirement avoir un namenode, un secondary namenode et 1 à n  datanode
 
@@ -42,7 +42,7 @@ secondary est 192.168.1.3
 datanodes sont 192.168.1.6, 192.168.1.2, 192.168.1.5
 
 
-* Si besoin vous pouvez modifier les fichiers de hadoop pour avoir un autre configuration dans les dossiers 
+* Si besoin modifier les fichiers de configuration de hadoop pour avoir un autre configuration :
 ```
 script/Fichier_de_configuration #Fichier configuration de base pour les datanodes
 script/Namenode_config
